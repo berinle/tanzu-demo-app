@@ -1,0 +1,18 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: fubu
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    apps.tanzu.vmware.com/has-tests: true
+    app.kubernetes.io/part-of: fubu
+spec:
+  params:
+  - name: annotations
+    value:
+      autoscaling.knative.dev/minScale: "0"
+  source:
+    git:
+      url: https://github.com/berinle/tanzu-demo-app
+      ref:
+        branch: main
